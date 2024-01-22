@@ -29,6 +29,7 @@ export const OverviewPage = () => {
         <div className="m-10">
           <p className="text-2xl m-2">Companies</p>
           <div className="grid grid-cols-2 gap-10 ">
+            { companyData.length==0?<p className="text-3xl font-semibold"> No Company Found</p> :<div>
             {companyData.map((data, index) => {
               return (
                 <CompanyCard
@@ -41,6 +42,7 @@ export const OverviewPage = () => {
                 />
               );
             })}
+            </div>}
           </div>
         </div>
       </div>

@@ -40,9 +40,10 @@ export const companyReducer = (state = initialState, action) => {
       console.log({companyIndex,deleteIndex});
       const deleteCompanyObject = state.companies[companyIndex];
 
-      const updatedCompanyObject = deleteCompanyObject.offices.filter(
-        (office, index) => index != deleteIndex
-      );
+      const updatedOfficeArray= deleteCompanyObject.offices.filter((office,index)=>index!=deleteIndex)
+      deleteCompanyObject.offices= updatedOfficeArray
+
+      const updatedCompanyObject = deleteCompanyObject
 
       return {
         ...state,

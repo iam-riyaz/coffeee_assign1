@@ -16,12 +16,11 @@ export const OfficeForm = () => {
   };
 
   const onSubmit = (values, { resetForm }) => {
-    // Handle form submission logic here
-    console.log(values);
-
+    
     dispatch(createOffice(values.company,values))
 
     resetForm();
+    alert("SUCCESS! office created successfully ")
   };
 
   useEffect(()=>{
