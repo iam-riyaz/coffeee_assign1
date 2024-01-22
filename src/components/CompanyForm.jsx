@@ -13,6 +13,7 @@ export const CompanyForm = () => {
     address: "",
     revenue: "",
     phoneNumber: "",
+    offices:[]
   };
 
   const onSubmit = (values,{resetForm}) => {
@@ -123,7 +124,7 @@ export const CompanyForm = () => {
           </div>
         </div>
 
-        <button className=" mt-6 border rounded-md bg-zinc-600 text-white text-lg px-4 py-1 w-full" type="submit">Submit</button>
+        <button className=" mt-6 border rounded-md bg-zinc-600 text-white text-lg px-4 py-1 w-full" type="submit">Create</button>
       </Form>
     </Formik>
     </div>

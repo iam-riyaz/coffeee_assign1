@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { deleteCompany } from "../redux/companyAction"
+import { Link } from "react-router-dom"
 
 export const CompanyCard=({name,address,revenue,phone,index})=>{
 
@@ -7,14 +8,17 @@ export const CompanyCard=({name,address,revenue,phone,index})=>{
 
     const handleRemove=(index)=>{
 
-      dispath(deleteCompany(index))
+      const userConfirmed=  window.confirm("are you sure, you want to DELETE ?")
 
-        
+        if(userConfirmed)
+        {
 
+            dispath(deleteCompany(index))
+        }
     }
 
-    const handleClick=()=>{
-
+    const handleClick=(index)=>{
+       
     }
     return(
         <>
@@ -24,7 +28,8 @@ export const CompanyCard=({name,address,revenue,phone,index})=>{
                 <p className="text-xl font-semibold ">{name}</p>
                 <p className="text-md font-bold cursor-pointer" onClick={()=>handleRemove(index)}>✖</p>
                 </div>
-                <div className="cursor-pointer" onClick={handleClick}>
+                <Link to={`/company/${index}`}>
+                <div className="cursor-pointer" onClick={()=>handleClick(index)}>
                     <div className="pb-4">
                         <p className="font-semibold text-md">Address:</p>
                         <p>{address}</p>
@@ -39,6 +44,7 @@ export const CompanyCard=({name,address,revenue,phone,index})=>{
                     </div>
 
                 </div>
+                </Link>
 
 
             </div>

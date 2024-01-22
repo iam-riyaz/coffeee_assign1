@@ -1,10 +1,12 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { officeFormValidationSchema } from "../validation/officeFormValidation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { createOffice } from "../redux/companyAction";
 export const OfficeForm = () => {
 
     const companyData= useSelector((state)=>state.company.companies)
+    const dispatch= useDispatch()
   const initialValues = {
     name: "",
     latitude: "",
@@ -17,10 +19,14 @@ export const OfficeForm = () => {
     // Handle form submission logic here
     console.log(values);
 
+    dispatch(createOffice(values.company,values))
+
     resetForm();
   };
 
   useEffect(()=>{
+    
+    console.log(companyData)
 
   },[companyData])
   
@@ -29,7 +35,7 @@ export const OfficeForm = () => {
     <>
       <div className="mx-10">
         <p className="text-2xl font-semibold text-gray-600 mb-4">
-          Create Company
+          Create Office
         </p>
         <Formik
           initialValues={initialValues}
@@ -137,7 +143,7 @@ export const OfficeForm = () => {
                   Select a company
                 </option>
                 {companyData.map((data, index) => (
-            <option key={index} value={data.name}>
+            <option key={index} value={index}>
               {data.name}
             </option>
           ))}
@@ -157,7 +163,7 @@ export const OfficeForm = () => {
               className=" mt-6 border rounded-md bg-zinc-600 text-white text-lg px-4 py-1 w-full"
               type="submit"
             >
-              Submit
+              Create
             </button>
           </Form>
         </Formik>
